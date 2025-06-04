@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go WASM Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        input { margin-right: 10px; margin-bottom: 10px; }
+        button { margin-top: 5px; }
+        .result { margin-top: 10px; font-weight: bold; padding: 5px; border: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <h1>Go (Golang) to WASM Demo</h1>
+
+    <h2>Concatenate Strings (Go)</h2>
+    <input type="text" id="str1" value="Hello, " />
+    <input type="text" id="str2" value="WASM!" />
+    <button id="concatButton">Concatenate</button>
+    <div id="resultConcat" class="result"></div>
+
+    <h2>Add Numbers (Go)</h2>
+    <input type="number" id="numA" value="25" />
+    <input type="number" id="numB" value="17" />
+    <button id="addButton">Add</button>
+    <div id="resultAdd" class="result"></div>
+
+    <!-- Important: wasm_exec.js is required to run Go WASM -->
+    <script src="wasm_exec.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

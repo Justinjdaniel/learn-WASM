@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Swift WASM Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
+        .container { background-color: white; padding: 15px; border-radius: 5px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button { padding: 8px 12px; margin-top: 5px; margin-right: 5px; }
+        .result { margin-top: 10px; font-weight: bold; min-height: 20px; padding: 8px; background-color: #e9e9e9; border-radius: 3px; }
+        input { padding: 8px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Swift WebAssembly Example</h1>
+
+    <div class="container">
+        <h2>Greet Function (Swift)</h2>
+        <input type="text" id="nameInput" value="WASM Developer">
+        <button onclick="callSwiftGreet()">Greet</button>
+        <div id="greetResult" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Add Function (Swift)</h2>
+        <input type="number" id="numA" value="7">
+        <input type="number" id="numB" value="8">
+        <button onclick="callSwiftAdd()">Add</button>
+        <div id="addResult" class="result"></div>
+    </div>
+
+    <div id="wasm-entry-point"></div>
+    <!-- carton will inject its script here or we'll add one -->
+    <script>
+        // Placeholder for calling Swift functions once loaded
+        async function callSwiftGreet() {
+            const name = document.getElementById('nameInput').value;
+            if (window.swiftExports && window.swiftExports.greet) {
+                const result = window.swiftExports.greet(name);
+                document.getElementById('greetResult').textContent = result;
+            } else {
+                document.getElementById('greetResult').textContent = "Swift 'greet' function not loaded yet.";
+            }
+        }
+
+        async function callSwiftAdd() {
+            const numA = parseInt(document.getElementById('numA').value);
+            const numB = parseInt(document.getElementById('numB').value);
+            if (window.swiftExports && window.swiftExports.add) {
+                const result = window.swiftExports.add(numA, numB);
+                document.getElementById('addResult').textContent = `Sum: ${result}`;
+            } else {
+                document.getElementById('addResult').textContent = "Swift 'add' function not loaded yet.";
+            }
+        }
+    </script>
+</body>
+</html>
