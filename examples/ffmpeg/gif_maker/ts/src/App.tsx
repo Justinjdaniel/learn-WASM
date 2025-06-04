@@ -1,8 +1,8 @@
-import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
+import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-const ffmpeg = createFFmpeg({ log: true });
+const ffmpeg = new FFmpeg();
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -20,10 +20,11 @@ function App() {
 
   const convertToGif = async () => {
     // Write the file to memory
-    ffmpeg.FS('writeFile', 'test.mp4', await fetchFile(video));
+    const fileData = await video.arrayBuffer();
+    await ffmpeg.writeFile('test.mp4', new Uint8Array(fileData));
 
     // Run the FFMpeg command
-    await ffmpeg.run(
+    await ffmpeg.exec([
       '-i',
       'test.mp4',
       '-t',
@@ -33,14 +34,14 @@ function App() {
       '-f',
       'gif',
       'out.gif'
-    );
+    ]);
 
     // Read the result
-    const data = ffmpeg.FS('readFile', 'out.gif');
+    const data = await ffmpeg.readFile('out.gif');
 
     // Create a URL
     const url = URL.createObjectURL(
-      new Blob([data.buffer], { type: 'image/gif' })
+      new Blob([data], { type: 'image/gif' })
     );
     setGif(url);
   };
