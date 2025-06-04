@@ -8,6 +8,9 @@ This repository is organized into the following main directories:
 *   `/docs`: Contains detailed documentation, guides, and conceptual explanations.
 *   `/src`: Will house core library code or reusable modules (currently planned).
 *   `/examples`: Provides practical, hands-on examples of WebAssembly in action.
+    *   **FFmpeg GIF Maker**: A TypeScript example demonstrating video to GIF conversion using FFmpeg.wasm. (See `examples/ffmpeg/gif_maker/ts`)
+    *   **C to WASM (Factorial)**: A simple example showing how to compile a C function (factorial) to WASM using Emscripten and call it from JavaScript. [Details here](./examples/wasm/c_example/README.md).
+    *   **Rust to WASM (Add & Greet)**: A basic example demonstrating how to compile Rust functions to WASM using `wasm-pack` and `wasm-bindgen`, then call them from JavaScript. [Details here](./examples/wasm/rust_example/README.md).
 *   `/tests`: Will include tests for any code developed in `/src` or `/examples`.
 *   `/build`: Will be used for build artifacts and outputs.
 *   `/scripts`: Contains utility scripts for building, testing, or managing the repository.

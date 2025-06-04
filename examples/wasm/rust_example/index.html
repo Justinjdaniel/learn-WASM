@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust WASM Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        input { margin-right: 10px; margin-bottom: 10px; }
+        button { margin-top: 5px; }
+        #resultAdd, #resultGreet { margin-top: 10px; font-weight: bold; padding: 5px; border: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <h1>Rust to WASM Demo</h1>
+
+    <h2>Add Function (Rust)</h2>
+    <input type="number" id="numA" value="10" />
+    <span>+</span>
+    <input type="number" id="numB" value="5" />
+    <button id="addButton">Calculate Sum</button>
+    <div id="resultAdd"></div>
+
+    <h2>Greet Function (Rust)</h2>
+    <input type="text" id="nameInput" value="WebAssembly User" />
+    <button id="greetButton">Greet</button>
+    <div id="resultGreet"></div>
+
+    <!--
+      The 'script.js' will load the WASM module.
+      'wasm-pack build' typically creates a 'pkg' directory containing
+      the WASM file and the necessary JavaScript glue code.
+      The paths in script.js will assume this structure.
+    -->
+    <script src="script.js"></script>
+</body>
+</html>
