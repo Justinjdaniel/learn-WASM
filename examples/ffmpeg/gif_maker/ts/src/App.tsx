@@ -6,10 +6,11 @@ const ffmpeg = new FFmpeg();
 
 function App() {
   const [ready, setReady] = useState(false);
-  const [video, setVideo] = useState<File | any>();
+  const [video, setVideo] = useState<File | undefined>();
   const [gif, setGif] = useState('');
 
   const load = async () => {
+    ffmpeg.setLogging(true);
     await ffmpeg.load();
     setReady(true);
   };
@@ -19,6 +20,10 @@ function App() {
   }, []);
 
   const convertToGif = async () => {
+    if (!video) {
+      alert('Please select a video file first.');
+      return;
+    }
     // Write the file to memory
     const fileData = await video.arrayBuffer();
     await ffmpeg.writeFile('test.mp4', new Uint8Array(fileData));
@@ -63,7 +68,7 @@ function App() {
 
       <h3>Result</h3>
 
-      <button onClick={convertToGif}>Convert</button>
+      <button onClick={convertToGif} disabled={!video}>Convert</button>
 
       {gif && <img src={gif} width="250" alt="" />}
     </div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C WASM Factorial Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        input { margin-right: 10px; }
+        button { margin-top: 10px; }
+        #result { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Factorial Calculator (C to WASM)</h1>
+    <p>Enter a non-negative integer to calculate its factorial.</p>
+    <input type="number" id="numberInput" value="5" min="0">
+    <button id="calculateButton">Calculate Factorial</button>
+    <div id="result"></div>
+
+    <!--
+      Note: The actual 'factorial.wasm' and the Emscripten-generated
+      'factorial.js' (glue code) must be in the same directory as this HTML file,
+      or the paths in the script.js file must be adjusted accordingly.
+      The 'compile.sh' script should generate these files.
+    -->
+    <script src="factorial.js"></script> <!-- Emscripten glue code -->
+    <script src="script.js"></script>   <!-- Our custom script -->
+</body>
+</html>
