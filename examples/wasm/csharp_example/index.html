@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# WASM Example</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .container { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; }
+        h2 { margin-top: 0; }
+        input[type="text"], input[type="number"] { margin-right: 10px; margin-bottom: 10px; padding: 5px; }
+        button { margin-top: 5px; padding: 8px 12px; }
+        .result { margin-top: 10px; font-weight: bold; padding: 5px; border: 1px solid #eee; min-height: 20px; }
+        #status { margin-top: 15px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>C# (via .NET) to WASM Demo</h1>
+    <div id="status">Loading .NET WASM Runtime...</div>
+
+    <div class="container">
+        <h2>Greet Function (C#)</h2>
+        <input type="text" id="nameInput" value="WebAssembly Fan" />
+        <button id="greetButton" disabled>Greet</button>
+        <div id="resultGreet" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Add Function (C#)</h2>
+        <input type="number" id="numA" value="33" />
+        <span>+</span>
+        <input type="number" id="numB" value="9" />
+        <button id="addButton" disabled>Calculate Sum</button>
+        <div id="resultAdd" class="result"></div>
+    </div>
+
+    <div class="container">
+        <h2>Complex Calculation (C#)</h2>
+        <input type="text" id="complexInput" value="SampleData123" />
+        <button id="complexButton" disabled>Run Calculation</button>
+        <div id="resultComplex" class="result"></div>
+    </div>
+
+    <!--
+      The 'build.sh' script should copy 'dotnet.js' and other necessary files
+      into a 'dist' directory within 'examples/wasm/csharp_example/'.
+      This script tag assumes that structure.
+    -->
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

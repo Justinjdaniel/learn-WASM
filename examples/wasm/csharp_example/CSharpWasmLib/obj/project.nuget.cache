@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "dgSpecHash": "2+SMIhLmhAfIFZvdAutcr3N0q2NbVsOUI2Tm2+8+6Qt9RxCsihxltrJeWcKhjmX7i0s5543XC69eCmKEiebx/w==",
+  "success": true,
+  "projectFilePath": "/app/examples/wasm/csharp_example/CSharpWasmLib/CSharpWasmLib.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+}
